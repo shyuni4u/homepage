@@ -153,6 +153,21 @@ export default {
         {
           class: '',
           image: require('@/assets/empty.png'),
+          title: '덱트래커 로그 플러그인',
+          due: '2020년 3월 - 2020년 3월 | 1개월',
+          desc: '덱트래커 플러그인 개발',
+          skill: 'C#, mariadb'
+        },
+        {
+          class: '',
+          image: require('@/assets/empty.png'),
+          title: '하스스톤 전장 로그 사이트',
+          due: '2020년 3월 - 2020년 3월 | 1개월',
+          desc: '전장 로그 사이트 개발: http://battlegroundlab.com',
+          skill: 'vuejs, php, mariadb, AWS'
+        },{
+          class: '',
+          image: require('@/assets/empty.png'),
           title: '하스스톤 전장 스트리머 통계 페이지',
           due: '2020년 2월 - 2020년 2월 | 1개월',
           desc: '전장 스트리머 로그 페이지 개발: https://shyuni4u.github.io/BattlegroundLab/dist/',
