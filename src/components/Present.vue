@@ -37,7 +37,7 @@
           <div class="item">
             <div class="nowrap content">
               <div class="nowrap sub_title">공군 19비행단</div>
-              <p class="date">2009년 3월 - 2011년 4월 | 2년 1개월</p>
+              <p class="date">2009년 5월 - 2011년 4월 | 2년 1개월</p>
               <div class="break desc">비행단 웹 서버 관리 및 이발예약, 체력관리 프로젝트 개발을 수행했습니다.</div>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default {
       right_info: [
         {
           class: '',
-          image: require('@/assets/empty.png'),
+          image: require('@/assets/hdt-logo.png'),
           title: '덱트래커 로그 플러그인',
           due: '2020년 3월 - 2020년 3월 | 1개월',
           desc: '덱트래커 플러그인 개발',
@@ -160,17 +160,17 @@ export default {
         },
         {
           class: '',
-          image: require('@/assets/empty.png'),
+          image: require('@/assets/hearthstone.jpg'),
           title: '하스스톤 전장 로그 사이트',
           due: '2020년 3월 - 2020년 3월 | 1개월',
-          desc: '전장 로그 사이트 개발: http://battlegroundlab.com',
+          desc: '전장 로그 사이트 개발',
           skill: 'vuejs, php, mariadb, AWS'
         },{
           class: '',
-          image: require('@/assets/empty.png'),
+          image: require('@/assets/hearthstone.jpg'),
           title: '하스스톤 전장 스트리머 통계 페이지',
           due: '2020년 2월 - 2020년 2월 | 1개월',
-          desc: '전장 스트리머 로그 페이지 개발: https://shyuni4u.github.io/BattlegroundLab/dist/',
+          desc: '전장 스트리머 로그 페이지 개발',
           skill: 'vuejs'
         },{
           class: '',
