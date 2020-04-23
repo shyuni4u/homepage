@@ -59,7 +59,7 @@
         </div>
       </li>
       <li class="etc body">
-        <div class="title">수상 및 기타</div>
+        <div class="title">교육 및 수료</div>
         <div class="content">
           <div class="name">{{ profile.etc.title }}</div>
           <div class="date">{{ profile.etc.date }}</div>
@@ -69,7 +69,7 @@
         <div class="title">링크</div>
         <div class="content">
           <div class="name">{{ profile.homepage.link }}</div>
-          <div class="qrcode">
+          <div class="qrcode for_print">
             <img :src="qrcode()" />
           </div>
         </div>
@@ -125,7 +125,7 @@ ul.profile {
     }
   }
   li.career>div.content>ul {
-    padding: 20px 0px;
+    padding: 30px 0px;
     border-bottom: 1px solid #c9c9c9;
     &:first-child {
       padding-top: 0px;

@@ -42,6 +42,12 @@ const routes = [
       import("../views/Resume.vue")
   },
   {
+    path: "/portfolio",
+    name: "portfolio",
+    component: () =>
+      import("../views/Portfolio.vue")
+  },
+  {
     path: "/github",
     name: "github",
     component: () =>

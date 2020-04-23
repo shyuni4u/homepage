@@ -47,6 +47,7 @@
       <router-view />
     </div>
     <div id="footer">
+      Copyright ⓒ 2020 Sunwoo Kim All right reserved.
     </div>
   </div>
 </template>
@@ -167,8 +168,18 @@ export default {
 }
 
 #footer {
+  padding: 20px 0;
   background-color: #0c0c13;
-  height: 100px;
+  color: #fff;
+  text-align: center;
+  min-height: 60px;
   width: 100%;
+}
+
+@media print {
+  #footer {
+    display: none;
+    -webkit-print-color-adjust: exact;
+  }
 }
 </style>

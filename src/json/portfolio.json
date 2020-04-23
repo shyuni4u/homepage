@@ -1,0 +1,98 @@
+{
+  "project" : [
+    {
+      "type" : "frontend backend full c#",
+      "name" : "하스스톤 전장 전적 사이트 (개인)",
+      "date" : "2020년 2월 - 2020년 4월",
+      "grade" : "기획 및 개발",
+      "ol" : [
+        "인기 게임 유저들은 바둑의 복기처럼 자신이 플레이한 게임 정보를 원함.",
+        "리그오브레전드의 경우 API가 공개되어있어서 op.gg와 같은 통계 및 복기 사이트가 존재.",
+        "하스스톤은 제공하는 API가 제한되어있기 때문에 플레이한 게임 정보가 없음.",
+        "하스스톤의 경우 설정을 변경하면 플레이한 게임 정보를 클라이언트에 로그형식으로 저장 가능.",
+        "사람들이 주로 사용하는 보조프로그램 [덱트래커] 존재하므로 [덱트래커]의 플러그인을 만들어 로그를 서버에 업로드 가능.",
+        "로그를 모두 업로드하기에는 한 게임당 최소 10MB 크기가 부담되기 때문에 로그를 압축하여 업로드를 하고 서버에서 분석하여 DB에 저장",
+        "DB에 저장된 내용을 사용자에게 웹페이지로 제공"
+      ],
+      "ul" : [
+        "환경: AWS, NginX, MariaDB, Docker",
+        "언어: C#, PHP, VueJS, HTML, Javascript, CSS",
+        "링크: http://battlegroundlab.com/"
+      ],
+      "image" : [
+        "player",
+        "game",
+        "hero"
+      ]
+    },
+    {
+      "type" : "frontend",
+      "name" : "자기소개 페이지 개발 (개인)",
+      "date" : "2019년 11월 - 2020년 04월",
+      "grade" : "개발",
+      "ol" : [
+        "이력서 및 개발이력 소개하는 단일 페이지 어플리케이션(SPA).",
+        "유지 비용은 없고 개발 자유도를 고려하여 GithubPage 사용.",
+        "자기소개, 프로젝트, Github 구성"
+      ],
+      "ul" : [
+        "환경: Github page",
+        "언어: VueJS, HTML, Javascript, CSS"
+      ],
+      "image" : [
+        "introduce",
+        "project",
+        "github"
+      ]
+    },
+    {
+      "type" : "frontend backend full fanuc",
+      "name" : "스마트팩토리 MES 개발 (큐빅테크)",
+      "date" : "2016년 11월 - 2019년 6월",
+      "grade" : "풀스택 개발자 | 주임",
+      "ol" : [
+        "스마트팩토리 지원사업: 대한민국 제조혁신을 위한 정부지원 사업.",
+        "중소기업의 경우 재고관리, 공정관리등을 담당자가 엑셀로 관리하는 경우가 많음.",
+        "공정과정을 설비에서 신호취득 후 전산처리하여 효율성 및 정확도를 높이고 모니터링 기능을 추가.",
+        "기존 페이지와 호환이 되도록 반응형 UI 구성.",
+        "기존 간트차트의 데이터 처리방식 변경으로 속도 개선 및 UI 변경.",
+        "기존 차트 라이브러리를 Echart.js로 대체하여 모니터링 화면 속도 개선"
+      ],
+      "ul" : [
+        "환경: Windows Server 2012, MSSQL, NginX, MariaDB, Docker",
+        "언어: PHP, HTML, Javascript, CSS, nodejs",
+        "고객사: 펠릭스테크, 탑아이엔디, 성암기연, 주강로보테크, 원풍산업, 대한제쇄, NEDEC, IJS, SMA"
+      ],
+      "image" : [
+        "monitoring_2018_sungam",
+        "progress_2017_sma3",
+        "workplan_2018_top",
+        "bom_2018_wnp",
+        "gantt_2018_sungam",
+        "monitoring_2017_nedec"
+      ]
+    },
+    {
+      "type" : "frontend backend full fanuc",
+      "name" : "스마트팩토리 체험환경 구축 (큐빅테크)",
+      "date" : "2018년 11월 - 2019년 6월",
+      "grade" : "풀스택 개발자 | 주임",
+      "ol" : [
+        "스마트팩토리를 적용하는 제조기업이 늘어남에 따라 대학교에서 미리 체험 환경을 구축하길 원함.",
+        "기계 팔, 감지 센서와 통신하는 서비스 개발.",
+        "체험환경에 대한 MES 페이지 개발.",
+        "학생들이 모바일에서도 접근 가능하도록 웹 앱 개발."
+      ],
+      "ul" : [
+        "환경: NginX, MariaDB, Docker",
+        "언어: PHP, HTML, Javascript, CSS, nodejs",
+        "고객사: 동양미래대학, 청주폴리텍"
+      ],
+      "image" : [
+        "mobile_2018_cj",
+        "monitoring_2018_cj",
+        "static_2018_cj"
+      ]
+    }
+  ]
+}
