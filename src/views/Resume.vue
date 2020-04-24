@@ -10,8 +10,10 @@
             <li class="name">{{ profile.name }} <span class="birth">{{ profile.birth }}</span></li>
             <li class="mb-4"></li>
             <li class="email">이메일: {{ profile.email }}</li>
+            <!--
             <li class="mb-4"></li>
             <li class="phone">연락처: {{ profile.phone }}</li>
+            -->
           </ul>
         </div>
       </li>

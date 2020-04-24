@@ -80,13 +80,16 @@ export default {
             }
           ]
         },
-        /*
         {
-          linkTo: '/study',
-          title: 'menuStudy',
+          linkTo: '/resume',
+          title: 'menuResume',
           sub: []
         },
-        */
+        {
+          linkTo: '/portfolio',
+          title: 'menuPortfolio',
+          sub: []
+        },
         {
           linkTo: '/github',
           title: 'menuGithub',
