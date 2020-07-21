@@ -1,6 +1,7 @@
 <template>
   <div class="resume">
     <ul class="profile">
+      <!-- 
       <li class="my_info body">
         <div class="title">
           <img :src="me()" />
@@ -10,10 +11,8 @@
             <li class="name">{{ profile.name }} <span class="birth">{{ profile.birth }}</span></li>
             <li class="mb-4"></li>
             <li class="email">이메일: {{ profile.email }}</li>
-            <!--
             <li class="mb-4"></li>
             <li class="phone">연락처: {{ profile.phone }}</li>
-            -->
           </ul>
         </div>
       </li>
@@ -25,6 +24,7 @@
         </div>
       </li>
       <li class="mb-4"></li>
+      -->
       <li class="career body">
         <div class="title">경력 & 프로젝트</div>
         <div class="content">
