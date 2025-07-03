@@ -69,9 +69,11 @@ export default function PortfolioPage() {
         <ThemeToggle />
       </div>
       <main className="container mx-auto p-4 md:p-8 lg:p-12">
+        {/* Header */}
         <Header />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 print:grid-cols-1">
+          {/* Main Content */}
           <div className="lg:col-span-2 space-y-16 print:space-y-8">
             <section id="about">
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 print:text-black">About Me</h2>
@@ -121,6 +123,7 @@ export default function PortfolioPage() {
             </section>
           </div>
 
+          {/* Sidebar */}
           <aside className="space-y-10 print:space-y-6">
             <Card className="p-6 dark:bg-slate-900/50 border dark:border-slate-800 print:shadow-none print:border print:p-4">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 print:text-black print:text-xl">
@@ -207,6 +210,7 @@ export default function PortfolioPage() {
           </aside>
         </div>
         
+        {/* Footer */}
         <Footer />
       </main>
     </div>
