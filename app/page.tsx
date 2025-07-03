@@ -130,11 +130,13 @@ export default function PortfolioPage() {
               <h2 className="mb-4 text-3xl font-bold text-slate-900 dark:text-white print:text-black">About Me</h2>
               <div className="prose prose-slate dark:prose-invert print:prose-black max-w-none text-lg print:text-base">
                 <p>
-                  대학 소모임 홈페이지를 관리하며 웹 개발에 대한 흥미를 느끼게 되었습니다. 이후 군 복무부터 현업에
-                  이르기까지 웹 개발, 특히 풀스택 개발에 집중해왔습니다. 꾸준히 개인 서비스와 애플리케이션을 만들며 실무
-                  경험 이상으로 개발 역량을 쌓아왔습니다. 새로운 기술을 열정적으로 배우고, 상황에 맞는 최적의 언어와
-                  도구를 선택하여 개발하는 것을 즐깁니다. 가치 있는 서비스를 만들어 성취감을 느끼는 것이 개발자로서 가장
-                  큰 기쁨이라고 생각합니다.
+                  대학 시절 웹 개발에 흥미를 느껴 군 복무 시절부터 현재까지 풀스택 개발에 집중해왔습니다. 큐빅테크와
+                  매니코어소프트를 거쳐 현재 모레(Moreh)에서 풀스택 개발자 및 팀장으로 재직하며, 사내 AI 학습 프레임워크
+                  플랫폼 설계 및 개발, Tensor/Operator 시각화 등 다양한 핵심 프로젝트를 주도하고 있습니다. 또한,
+                  로스트아크/와우 직업 추천 Big5 심리테스트, 하스스톤 전장 전적 사이트 등 개인 프로젝트를 꾸준히
+                  개발하며 실무 경험 이상의 기술 역량을 쌓아왔습니다. Go, Node.js, Next.js, Docker, Kubernetes 등 폭넓은
+                  기술 스택을 활용하여 최적의 솔루션을 도출하며, 새로운 기술을 학습하고 가치 있는 서비스를 구현하는 데
+                  큰 즐거움을 느낍니다.
                 </p>
               </div>
             </section>
