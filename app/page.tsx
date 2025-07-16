@@ -9,6 +9,17 @@ import { ProjectProps, ProjectCard } from '@/components/molecule/ProjectCard'
 import Footer from '@/components/atom/Footer'
 import Header from '@/components/atom/Header'
 
+type VercelProject = {
+  name: string
+  url: string
+  description?: string
+  createdAt: string
+  frameworks?: string[]
+  latestDeployments?: {
+    alias: string[]
+  }[]
+}
+
 const getImages = (subDir = ''): string[] => {
   const basePath = path.join(process.cwd(), 'public/assets', subDir)
   const entries = fs.readdirSync(basePath, { withFileTypes: true })
@@ -43,10 +54,10 @@ export default async function PortfolioPage() {
     .catch((err) => {
       console.error('[API Error]', err)
       return []
-    })) satisfies { name: string; url: string; description?: string; createdAt: string; frameworks?: string[] }[]
+    })) satisfies VercelProject[]
 
-  const liveProjects = await Promise.all(
-    vercelProjects.projects.map(async (project: any) => ({
+  const liveProjects: ProjectProps[] = await Promise.all(
+    vercelProjects.projects.map(async (project: VercelProject) => ({
       title: project.name,
       type: 'project',
       period: `${new Date(project.createdAt).getFullYear()}년 ${new Date(project.createdAt).getMonth() + 1}월 - 현재`,
@@ -54,8 +65,10 @@ export default async function PortfolioPage() {
       description: project.description || 'Vercel에서 호스팅되는 프로젝트입니다. 링크를 확인해주세요.',
       tech: project.frameworks || ['Next.js'],
       link:
-        project?.latestDeployments?.[0]?.alias.length > 0
-          ? `https://${project?.latestDeployments?.[0]?.alias[0]}`
+        project.latestDeployments &&
+        project.latestDeployments.length > 0 &&
+        project.latestDeployments[0].alias.length > 0
+          ? `https://${project.latestDeployments[0].alias[0]}`
           : project.url,
     })),
   )
