@@ -1,8 +1,9 @@
+import { headers } from 'next/headers'
 import fs from 'fs'
 import path from 'path'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
-import { GraduationCap, Briefcase, Star } from 'lucide-react'
+import { GraduationCap, Briefcase, GitBranch, Activity } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/themeToggle'
 import { ProjectProps, ProjectCard } from '@/components/molecule/ProjectCard'
 import Footer from '@/components/atom/Footer'
@@ -27,32 +28,38 @@ const getImages = (subDir = ''): string[] => {
   return results
 }
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const host = (await headers()).get('host')
+  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+  const baseUrl = `${protocol}://${host}`
   const assetsAllImages = getImages()
+  const vercelProjects = (await fetch(`${baseUrl}/api/vercel`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error('[API Error]', err)
+      return []
+    })) satisfies { name: string; url: string; description?: string; createdAt: string; frameworks?: string[] }[]
 
-  const projects: ProjectProps[] = [
-    {
-      title: 'Big5 심리테스트를 통한 로스트아크 직업 추천',
+  const liveProjects = await Promise.all(
+    vercelProjects.projects.map(async (project: any) => ({
+      title: project.name,
       type: 'project',
-      period: '2021년 6월 - 2021년 11월',
+      period: `${new Date(project.createdAt).getFullYear()}년 ${new Date(project.createdAt).getMonth() + 1}월 - 현재`,
       role: '기획 및 개발 (개인 프로젝트)',
-      description:
-        '로스트아크 직업 추천을 위한 Big5 심리테스트 웹 애플리케이션입니다. 사용자가 테스트를 완료하면, 결과에 따라 최적의 직업을 추천합니다.',
-      tech: ['TypeScript', 'AWS', 'MariaDB'],
-      images: assetsAllImages.filter((img) => img.includes('big5_lostark')),
-      link: 'http://lostark.enzo.kr/',
-    },
-    {
-      title: 'Big5 심리테스트를 통한 와우 직업 추천',
-      type: 'project',
-      period: '2020년 9월 - 2021년 11월',
-      role: '기획 및 개발 (개인 프로젝트)',
-      description:
-        '와우 직업 추천을 위한 Big5 심리테스트 웹 애플리케이션입니다. 사용자가 테스트를 완료하면, 결과에 따라 최적의 직업을 추천합니다.',
-      tech: ['TypeScript', 'AWS', 'MariaDB'],
-      images: assetsAllImages.filter((img) => img.includes('big5_wow')),
-      link: 'http://wow.enzo.kr/',
-    },
+      description: project.description || 'Vercel에서 호스팅되는 프로젝트입니다. 링크를 확인해주세요.',
+      tech: project.frameworks || ['Next.js'],
+      link:
+        project?.latestDeployments?.[0]?.alias.length > 0
+          ? `https://${project?.latestDeployments?.[0]?.alias[0]}`
+          : project.url,
+    })),
+  )
+  const inactiveProjects: ProjectProps[] = [
     {
       title: '하스스톤 전장 전적 사이트 (Hearthstone Battlegrounds Stats)',
       type: 'project',
@@ -74,7 +81,6 @@ export default function PortfolioPage() {
       images: assetsAllImages.filter((img) => img.includes('overcam')),
     },
   ]
-
   const experiences: ProjectProps[] = [
     {
       title: '모레 (Moreh)',
@@ -162,12 +168,33 @@ export default function PortfolioPage() {
               </div>
             </section>
 
-            <section id="projects">
+            <section id="live-projects">
               <h2 className="mb-6 flex items-center gap-3 text-3xl font-bold text-slate-900 dark:text-white print:text-black">
-                <Star /> Projects
+                <Activity /> Live Projects
               </h2>
               <div className="space-y-8">
-                {projects.map((proj, index) => (
+                {liveProjects.map((proj, index) => (
+                  <ProjectCard
+                    key={index}
+                    title={proj.title}
+                    type={proj.type}
+                    period={proj.period}
+                    role={proj.role}
+                    description={proj.description}
+                    tech={proj.tech}
+                    images={proj.images}
+                    link={proj.link}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section id="inactive-projects">
+              <h2 className="mb-6 flex items-center gap-3 text-3xl font-bold text-slate-900 dark:text-white print:text-black">
+                <GitBranch /> Inactive Projects
+              </h2>
+              <div className="space-y-8">
+                {inactiveProjects.map((proj, index) => (
                   <ProjectCard
                     key={index}
                     title={proj.title}
