@@ -30,6 +30,7 @@ export function ProjectCard(props: ProjectProps) {
             <CardDescription className="print:text-sm">
               {role} | {period}
             </CardDescription>
+            {link && <p className="hidden text-xs break-all text-blue-700 print:block">{link}</p>}
           </div>
           {link && (
             <Button variant="ghost" size="icon" asChild className="print:hidden">
@@ -81,7 +82,7 @@ export function ProjectCard(props: ProjectProps) {
               <CarouselPrevious className="left-2" />
               <CarouselNext className="right-2" />
             </Carousel>
-            <div className="mt-2 hidden grid-cols-2 gap-2 print:grid">
+            <div className="mt-2 hidden grid-cols-3 gap-2 print:grid">
               {images.map((src, i) => (
                 <Image
                   key={i}
