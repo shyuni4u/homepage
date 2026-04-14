@@ -40,6 +40,8 @@ lib/
 - Path alias: `@/*` maps to project root
 - Styling: Tailwind utility classes, `cn()` for conditional classes
 - Blog posts: MDX files in `content/blog/` with `YYYY-MM-DD-slug.mdx` naming
+- MDX 볼드 작성 시 `**"text"**` 금지 — 따옴표가 `**` 바로 옆에 오면 MDX 파서가 볼드로 인식하지 못함. `"**text**"` 형태로 따옴표를 바깥에 배치할 것
+- MDX 날짜 처리 시 `new Date().getMonth()` 등 로컬 메서드 금지 — gray-matter가 YAML date를 Date 객체로 자동 변환하므로, `dateToString()`으로 정규화 후 문자열 split 방식 사용
 
 ## Commands
 
