@@ -1,0 +1,160 @@
+---
+title: "AI와 함께 일한다는 것 - 원더러스에서의 9개월"
+description: "ChatGPT, Claude Code, Gemini를 비교하며 시작해, 하네스 엔지니어링까지. AI 코딩 도구와 함께 서비스를 만들어온 과정의 기록."
+date: 2026-04-14
+tags: ["AI", "개발", "회고"]
+slug: "ai-evolution-at-wonderers"
+published: true
+---
+
+2025년 7월, 원더러스에 합류했다. 이상형 검색 특화 데이팅 서비스 '피카(Pika)'를 만드는 팀이었다. Flutter 모바일 앱, Next.js 웹 플랫폼, 관리자 대시보드까지 — 풀스택을 맡았다.
+
+그리고 나에겐 새로운 동료가 있었다. AI.
+
+---
+
+## AI 코딩 도구의 타임라인
+
+이 9개월간 AI 코딩 도구 생태계에서 무슨 일이 있었는지 먼저 정리해둔다. 내가 도구를 선택하고, 방식을 바꾸고, 때로는 갈아탄 이유를 이해하려면 이 흐름을 알아야 한다.
+
+```
+2025년
+  2월  Claude Code 출시 (터미널 기반 코딩 에이전트)
+  5월  Claude 4 (Opus/Sonnet) 출시
+  6월  Gemini CLI 출시, OpenAI Codex CLI 출시
+  9월  Claude Sonnet 4.5 출시
+ 10월  Claude Code Skills 출시 (skills-2025-10-02 beta)
+       Superpowers 플러그인 출시
+       Gemini Code Assist → Agent Mode 전환
+ 11월  Claude Opus 4.5 출시
+ 12월  Claude Code — Background Agent, .claude/rules/, 모델 전환
+
+2026년
+  1월  Claude Code — SKILL.md, 세션 포크, Cloud Handoff
+       Superpowers 공식 마켓플레이스 등록
+  2월  Claude Opus 4.6 출시 (1M 컨텍스트, 128K 출력)
+       Claude Sonnet 4.6 출시
+```
+
+AI 코딩 도구의 발전 속도가 말도 안 되게 빨랐다. 그리고 나는 이 흐름 한가운데에서 서비스를 만들고 있었다.
+
+---
+
+## Phase 1. 탐색 (2025년 7~9월)
+
+처음부터 하나를 정하지 않았다. ChatGPT, Claude Code, Gemini — 여러 도구를 동시에 쓰며 비교했다.
+
+아이디어 회의에는 ChatGPT를 썼다. 자유롭게 브레인스토밍하고, 서비스 컨셉을 정리하는 데 좋았다. 코드 생성은 도구마다 같은 요청을 던져보며 품질을 비교했다.
+
+이 시기에 Flutter 앱과 웹 플랫폼의 초기 코드가 만들어졌다.
+
+```
+peoplez-flutter  첫 커밋: 2025-08-29
+peoplez-web      첫 커밋: 2025-09-04
+```
+
+Flutter 프로젝트에는 첫날부터 `CLAUDE.md`를 만들었고, `.claude/settings.local.json` 설정도 9월 4일에 추가했다. 아직 Claude Code로 확정한 건 아니었지만, 가능성을 열어두고 준비한 셈이다.
+
+이 시기의 커밋 메시지는 이랬다:
+
+```
+Initial commit
+DB setting init
+init: docs
+```
+
+짧고, 영어 위주고, 별 설명이 없다. AI와의 협업이라기보다는 AI를 '도구'로 쓰던 시기였다.
+
+---
+
+## Phase 2. Claude와 Gemini (2025년 10~11월)
+
+비교를 거쳐, 내 주력 도구는 **Claude Code**와 **Gemini Code Assist**로 좁혀졌다.
+
+웹 프로젝트에서 10월 10일, 첫 Claude 공동 작업 커밋이 등장한다:
+
+```
+2025-10-10 feat: improve profile & ideal type editing
+2025-10-10 test: expand test coverage and performance tools
+2025-10-14 refactor: 코드 중복 제거 및 유틸리티 함수 개선
+2025-10-23 feat: update docs
+```
+
+동시에 Gemini Code Assist도 활발하게 사용했다. 웹 프로젝트에서는 Gemini가 **21개** 커밋으로 이어받았고, Flutter에서도 Gemini가 **48개** 커밋에 기여했다.
+
+두 도구의 역할은 자연스럽게 나뉘었다. Claude는 구조적인 리팩토링이나 복잡한 로직에 강했고, Gemini는 빠른 기능 구현에 유용했다.
+
+한편 CLAUDE.md는 점점 정교해졌다. Supabase RPC 패턴, Flutter API 규칙, Provider 최적화, 프라이버시 필터링 로직까지 **209줄**의 개발 가이드라인으로 정리했다. 프로젝트의 규칙을 문서로 정의하면, AI가 그것을 따라 일관된 코드를 만들어냈다.
+
+그리고 11월 13일, Flutter 프로젝트에서도 Claude의 첫 커밋이 등장한다. Claude Opus 4.5 출시(11월 24일) 직전 — 모델 성능이 올라가면서 코딩 에이전트로서의 신뢰도가 높아지던 시기였다.
+
+```
+2025-11-13 cc7f8a99 Co-Authored-By: Claude
+2025-11-14 320f5cdb Co-Authored-By: Claude
+```
+
+같은 10월, Claude Code에 **Skills** 기능이 출시됐고, **Superpowers 플러그인**도 나왔다. 하지만 이때는 아직 그 존재를 몰랐다. 나중에야 알게 된다.
+
+---
+
+## Phase 3. 확장과 안정 (2025년 12월 ~ 2026년 2월)
+
+앱이 배포되자 관리 페이지가 필요해졌다. KPI, 리텐션, 채팅 분석을 실시간으로 모니터링하는 대시보드 — **pika-monitor** 프로젝트가 시작됐다.
+
+```
+pika-monitor 첫 커밋: 2025-12-15
+```
+
+이 프로젝트의 CLAUDE.md는 **504줄**로 가장 상세했다. KPI 정의, 스키마 규칙, 날짜 유틸리티(KST 기반), 차트 컬러 테마까지. 흥미로운 건 정작 이 프로젝트에서 AI Co-Authored 커밋은 거의 없다는 점이다. CLAUDE.md는 AI를 위한 문서이자, 동시에 **프로젝트의 개발 원칙을 정리하는 문서**로서 가치가 있었다.
+
+12월, Claude Code도 진화했다. Background Agent, `.claude/rules/`, 모델 전환 기능이 추가됐다. 2026년 1월에는 SKILL.md 지원과 세션 포크가 나왔고, 2월에는 **Claude Opus 4.6**이 출시됐다 — 1M 토큰 컨텍스트, 128K 출력.
+
+도구들이 미친 속도로 진화하는 동안, 두 프로젝트를 동시에 진행하면서도 속도가 떨어지지 않았다.
+
+---
+
+## Phase 4. 하네스 엔지니어링 (2026년 3월~)
+
+전환점이 한 번 더 왔다. Claude Code의 **하네스 엔지니어링** — hook, skill, settings 같은 시스템을 제대로 알게 되면서, AI와의 협업 방식 자체가 진화했다.
+
+사실 Skills는 2025년 10월에, Superpowers 플러그인도 같은 시기에 나왔었다. 반년이나 지나서야 알게 된 셈이다. 하지만 그 반년간 AI와 함께 일하며 쌓은 경험이 있었기에, 이 도구들의 가치를 바로 이해할 수 있었다.
+
+이전까지는 AI에게 "이거 만들어줘"라고 요청하는 방식이었다면, 이제는 **워크플로우 자체를 설계**할 수 있게 됐다:
+
+- **Hook**: 특정 이벤트(커밋, 도구 사용 등)에 자동으로 실행되는 규칙
+- **Skill**: 브레인스토밍 → 설계 문서 → 구현 계획 → 서브에이전트 실행이라는 체계적인 개발 파이프라인
+- **Superpowers**: TDD, 디버깅, 코드 리뷰 같은 전문 워크플로우를 스킬로 정의
+
+4월 13일, Flutter 프로젝트에서 Claude Opus 4.6과의 첫 본격 협업이 시작됐다. 얼굴상/활동지역 아키텍처를 대규모로 리팩토링하는 작업 — 하루에 **7개 커밋**이 체계적으로 나왔다:
+
+```
+2026-04-13 Co-Authored-By: Claude Opus 4.6 (1M context)
+  feat: TutorialLocationScreen 추가, TutorialFaceTypeScreen 삭제
+  feat: 튜토리얼 라우트 face-type → location 교체
+  feat: complete_user_signup_v2 RPC — location 저장 추가
+  fix: 테스트 fixtures/mapper에서 face_type → location 참조 정리
+  fix: 코드 리뷰 반영 — 헤더 텍스트, region 초기화, 주석 정리
+```
+
+그리고 4월 14일, 이 블로그 페이지 자체가 그 결과물이다. 브레인스토밍 스킬로 설계를 잡고, 계획 스킬로 9개 태스크를 정의하고, 서브에이전트가 각 태스크를 구현했다. 사람은 방향만 잡았다.
+
+---
+
+## 돌아보며
+
+9개월을 돌아보면, "AI와 함께 일한다"는 건 하나의 도구를 마스터하는 게 아니었다.
+
+**도구 선택의 진화**:
+- 7~9월: ChatGPT, Claude, Gemini를 비교하며 탐색
+- 10~11월: Claude + Gemini 병행, CLAUDE.md로 규칙 정의
+- 12~2월: 세 프로젝트 동시 운영, AI 도구가 빠르게 진화하는 와중에 안정적 개발
+- 3월~: Claude Code 하네스 엔지니어링으로 워크플로우 자동화
+
+**사람 역할의 진화**:
+- 처음: "이거 만들어줘" (도구로서의 AI)
+- 중간: CLAUDE.md로 규칙 정의 (파트너로서의 AI)
+- 지금: 워크플로우 설계 (시스템으로서의 AI)
+
+AI는 빠르게 진화하고 있고, 그 속도에 맞춰 **사람의 역할도 진화**해야 한다. 코드를 직접 쓰는 시간은 줄었지만, 설계하고 판단하고 검증하는 시간은 오히려 늘었다.
+
+이건 AI가 사람을 대체한 이야기가 아니다. 사람이 AI와 함께 **더 많은 것을 만들어낸** 이야기다.
