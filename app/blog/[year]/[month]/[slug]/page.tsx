@@ -3,6 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import rehypePrettyCode from 'rehype-pretty-code'
+import remarkGfm from 'remark-gfm'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { mdxComponents } from '@/components/blog/mdx-components'
 import PostHeader from '@/components/blog/PostHeader'
@@ -16,10 +17,10 @@ type Params = {
 export async function generateStaticParams() {
   const posts = getAllPosts()
   return posts.map((post) => {
-    const date = new Date(post.date)
+    const [year, month] = post.date.split('-')
     return {
-      year: date.getFullYear().toString(),
-      month: (date.getMonth() + 1).toString().padStart(2, '0'),
+      year,
+      month: month.padStart(2, '0'),
       slug: post.slug,
     }
   })
@@ -68,6 +69,7 @@ export default async function BlogPostPage({ params }: Params) {
             components={mdxComponents}
             options={{
               mdxOptions: {
+                remarkPlugins: [remarkGfm],
                 rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark-default' }]],
               },
             }}

@@ -8,10 +8,8 @@ type PostNavigationProps = {
 }
 
 function getPostUrl(post: PostMeta): string {
-  const date = new Date(post.date)
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  return `/blog/${year}/${month}/${post.slug}`
+  const [year, month] = post.date.split('-')
+  return `/blog/${year}/${month.padStart(2, '0')}/${post.slug}`
 }
 
 export default function PostNavigation({ prev, next }: PostNavigationProps) {

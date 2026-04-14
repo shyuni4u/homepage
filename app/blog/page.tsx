@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { getAllPosts, getAllTags } from '@/lib/blog'
+
 import Timeline from '@/components/blog/Timeline'
 import { ThemeToggle } from '@/components/ui/themeToggle'
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const posts = getAllPosts()
-  const tags = getAllTags()
+  const tags = getAllTags(posts)
 
   return (
     <div className="relative min-h-screen bg-slate-50 font-sans text-slate-800 dark:bg-black dark:text-slate-200">

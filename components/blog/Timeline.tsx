@@ -21,8 +21,8 @@ export default function Timeline({ posts, tags }: TimelineProps) {
         <TagFilter tags={tags} selectedTag={selectedTag} onSelectTag={setSelectedTag} />
       </div>
       <div>
-        {filteredPosts.map((post) => (
-          <TimelineItem key={post.slug} post={post} />
+        {filteredPosts.map((post, index) => (
+          <TimelineItem key={post.slug} post={post} isLast={index === filteredPosts.length - 1} />
         ))}
         {filteredPosts.length === 0 && (
           <p className="text-slate-500 dark:text-slate-400">해당 태그의 글이 없습니다.</p>

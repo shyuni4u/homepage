@@ -2,8 +2,8 @@ import { Badge } from '@/components/ui/badge'
 import type { PostMeta } from '@/lib/blog'
 
 export default function PostHeader({ meta }: { meta: PostMeta }) {
-  const date = new Date(meta.date)
-  const formattedDate = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`
+  const [yearStr, monthStr, dayStr] = meta.date.split('-')
+  const formattedDate = `${yearStr}년 ${parseInt(monthStr)}월 ${parseInt(dayStr)}일`
 
   return (
     <div className="mb-8">

@@ -2,19 +2,20 @@ import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import type { PostMeta } from '@/lib/blog'
 
-export default function TimelineItem({ post }: { post: PostMeta }) {
-  const date = new Date(post.date)
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const day = date.getDate()
-  const formattedDate = `${year}년 ${date.getMonth() + 1}월 ${day}일`
+export default function TimelineItem({ post, isLast }: { post: PostMeta; isLast: boolean }) {
+  const [yearStr, monthStr, dayStr] = post.date.split('-')
+  const year = yearStr
+  const month = monthStr.padStart(2, '0')
+  const formattedDate = `${yearStr}년 ${parseInt(monthStr)}월 ${parseInt(dayStr)}일`
 
   return (
     <div className="relative pl-8 pb-8 last:pb-0">
       {/* Timeline dot */}
       <div className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-sky-500 bg-white dark:border-sky-400 dark:bg-slate-900" />
       {/* Timeline line */}
-      <div className="absolute left-[5px] top-5 bottom-0 w-0.5 bg-slate-200 last:hidden dark:bg-slate-700" />
+      {!isLast && (
+        <div className="absolute left-[5px] top-5 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700" />
+      )}
 
       <Link href={`/blog/${year}/${month}/${post.slug}`} className="group block">
         <time className="text-sm text-slate-500 dark:text-slate-400">{formattedDate}</time>
