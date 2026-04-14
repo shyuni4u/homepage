@@ -44,7 +44,7 @@ export default async function PortfolioPage() {
   const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
   const baseUrl = `${protocol}://${host}`
   const assetsAllImages = getImages()
-  const vercelProjects = (await fetch(`${baseUrl}/api/vercel`, {
+  const vercelProjects = await fetch(`${baseUrl}/api/vercel`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -53,11 +53,11 @@ export default async function PortfolioPage() {
     .then((res) => res.json())
     .catch((err) => {
       console.error('[API Error]', err)
-      return []
-    })) satisfies VercelProject[]
+      return { projects: [] }
+    })
 
   const liveProjects: ProjectProps[] = await Promise.all(
-    vercelProjects.projects.map(async (project: VercelProject) => ({
+    (vercelProjects?.projects ?? []).map(async (project: VercelProject) => ({
       title: project.name,
       type: 'project',
       period: `${new Date(project.createdAt).getFullYear()}년 ${new Date(project.createdAt).getMonth() + 1}월 - 현재`,
