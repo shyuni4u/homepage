@@ -101,13 +101,13 @@ export default async function PortfolioPage() {
       period: '2025년 7월 - 현재',
       role: '풀스택 개발자',
       description:
-        '이상형 검색 특화 데이팅 서비스 \'피카(Pika)\'의 Flutter 모바일 앱, Next.js 웹 플랫폼, 그리고 KPI·리텐션·채팅 분석 등을 실시간으로 모니터링하는 관리자 대시보드를 설계 및 개발했습니다. Supabase 기반의 실시간 채팅, 소프트 필터링 매칭 알고리즘, 신뢰점수 시스템, 크레딧 기반 프라이버시 사진 시스템 등 핵심 기능을 구현했습니다.',
+        "이상형 검색 특화 데이팅 서비스 '피카(Pika)'의 Flutter 모바일 앱, Next.js 웹 플랫폼, 그리고 KPI·리텐션·채팅 분석 등을 실시간으로 모니터링하는 관리자 대시보드를 설계 및 개발했습니다. Supabase 기반의 실시간 채팅, 소프트 필터링 매칭 알고리즘, 신뢰점수 시스템, 크레딧 기반 프라이버시 사진 시스템 등 핵심 기능을 구현했습니다.",
       tech: ['Flutter', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Firebase', 'Riverpod', 'Recharts'],
     },
     {
       title: '모레 (Moreh)',
       type: 'experience',
-      period: '2020년 10월 - 현재',
+      period: '2020년 10월 - 2025년 7월',
       role: '풀스택 개발자 | 팀장',
       description:
         '사내용 웹 및 봇 개발, 학습과정 디버깅을 위한 Tensor, Operator 시각화 개발, 사내 AI 학습 프레임워크 플랫폼(MCP, PCS, MoAI) 설계 및 개발, Modelhub 초기버전 개발, AMD prometheus exporter addon 개발, Keycloak 적용으로 인증 및 권한 관리 통합 등의 다양한 프로젝트를 수행했습니다. 또한, 사내 개발 문화 개선을 위한 다양한 활동을 주도하고 있습니다.',
@@ -161,9 +161,9 @@ export default async function PortfolioPage() {
                   대학 시절 웹 개발에 흥미를 느껴 군 복무 시절부터 현재까지 풀스택 개발에 집중해왔습니다. 큐빅테크와
                   매니코어소프트를 거쳐 모레(Moreh)에서 풀스택 개발자 및 팀장으로 재직하며, 사내 AI 학습 프레임워크
                   플랫폼 설계 및 개발, Tensor/Operator 시각화 등 다양한 핵심 프로젝트를 주도했습니다. 현재는
-                  원더러스(Wonderers)에서 이상형 검색 특화 데이팅 서비스 &#39;피카(Pika)&#39;의 Flutter 모바일 앱, Next.js 웹
-                  플랫폼, 관리자 대시보드를 설계 및 개발하고 있습니다. 또한, 로스트아크/와우 직업 추천 Big5 심리테스트,
-                  하스스톤 전장 전적 사이트 등 개인 프로젝트를 꾸준히 개발하며 실무 경험 이상의 기술 역량을
+                  원더러스(Wonderers)에서 이상형 검색 특화 데이팅 서비스 &#39;피카(Pika)&#39;의 Flutter 모바일 앱,
+                  Next.js 웹 플랫폼, 관리자 대시보드를 설계 및 개발하고 있습니다. 또한, 로스트아크/와우 직업 추천 Big5
+                  심리테스트, 하스스톤 전장 전적 사이트 등 개인 프로젝트를 꾸준히 개발하며 실무 경험 이상의 기술 역량을
                   쌓아왔습니다. Go, Node.js, Next.js, Flutter, Supabase, Docker, Kubernetes 등 폭넓은 기술 스택을
                   활용하여 최적의 솔루션을 도출하며, 새로운 기술을 학습하고 가치 있는 서비스를 구현하는 데 큰 즐거움을
                   느낍니다.
