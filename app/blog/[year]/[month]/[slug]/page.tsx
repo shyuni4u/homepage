@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: Params) {
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],
-                rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark-default' }]],
+                rehypePlugins: [[rehypePrettyCode, { theme: { dark: 'github-dark-default', light: 'github-light-default' } }]],
               },
             }}
           />

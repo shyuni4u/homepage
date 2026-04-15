@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
+import { formatDateKo } from '@/lib/date'
 import type { PostMeta } from '@/lib/blog'
 
 export default function TimelineItem({ post, isLast }: { post: PostMeta; isLast: boolean }) {
-  const [yearStr, monthStr, dayStr] = post.date.split('-')
-  const year = yearStr
-  const month = monthStr.padStart(2, '0')
-  const formattedDate = `${yearStr}년 ${parseInt(monthStr)}월 ${parseInt(dayStr)}일`
+  const [year, month] = post.date.split('-')
+  const formattedDate = formatDateKo(post.date)
 
   return (
     <div className="relative pl-8 pb-8 last:pb-0">

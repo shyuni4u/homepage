@@ -28,6 +28,7 @@ function parseDate(date: string | Date) {
 }
 
 function dateToString(date: string | Date): string {
+  if (!date) return ''
   if (date instanceof Date) {
     const y = date.getUTCFullYear()
     const m = (date.getUTCMonth() + 1).toString().padStart(2, '0')
@@ -36,6 +37,8 @@ function dateToString(date: string | Date): string {
   }
   return date
 }
+
+export { formatDateKo } from './date'
 
 export const getAllPosts = cache((): PostMeta[] => {
   if (!fs.existsSync(BLOG_DIR)) return []
@@ -47,7 +50,15 @@ export const getAllPosts = cache((): PostMeta[] => {
       const filePath = path.join(BLOG_DIR, filename)
       const fileContent = fs.readFileSync(filePath, 'utf-8')
       const { data } = matter(fileContent)
-      return { ...data, date: dateToString(data.date) } as PostMeta
+      const meta: PostMeta = {
+        title: data.title ?? '',
+        description: data.description ?? '',
+        date: dateToString(data.date),
+        tags: Array.isArray(data.tags) ? data.tags : [],
+        slug: data.slug ?? filename.replace(/\.mdx$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, ''),
+        published: data.published ?? false,
+      }
+      return meta
     })
     .filter((post) => post.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -70,7 +81,14 @@ export const getPostBySlug = cache((year: string, month: string, slug: string): 
     const filePath = path.join(BLOG_DIR, filename)
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const { data, content } = matter(fileContent)
-    const meta = { ...data, date: dateToString(data.date) } as PostMeta
+    const meta: PostMeta = {
+      title: data.title ?? '',
+      description: data.description ?? '',
+      date: dateToString(data.date),
+      tags: Array.isArray(data.tags) ? data.tags : [],
+      slug: data.slug ?? filename.replace(/\.mdx$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, ''),
+      published: data.published ?? false,
+    }
     const { year: postYear, month: postMonth } = parseDate(meta.date)
 
     if (
