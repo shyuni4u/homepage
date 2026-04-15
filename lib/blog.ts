@@ -35,7 +35,8 @@ function dateToString(date: string | Date): string {
     const d = date.getUTCDate().toString().padStart(2, '0')
     return `${y}-${m}-${d}`
   }
-  return date
+  const [y, m, d] = date.split('-')
+  return `${y}-${m.padStart(2, '0')}-${(d ?? '01').padStart(2, '0')}`
 }
 
 export { formatDateKo } from './date'
@@ -61,7 +62,7 @@ export const getAllPosts = cache((): PostMeta[] => {
       return meta
     })
     .filter((post) => post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => b.date.localeCompare(a.date))
 
   return posts
 })
