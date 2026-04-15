@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "WebSearch",
+      "Bash(gh pr:*)",
+      "Bash(gh api:*)"
+    ]
+  }
+}

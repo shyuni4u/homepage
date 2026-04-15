@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, Github } from 'lucide-react'
+import { Mail, Phone, Github, BookOpen } from 'lucide-react'
 
 export default function Header() {
   return (
@@ -51,6 +52,16 @@ export default function Header() {
             >
               <Github className="h-4 w-4" /> GitHub
             </a>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="bg-transparent dark:border-slate-700 dark:bg-slate-900"
+          >
+            <Link href="/blog" className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4" /> Blog
+            </Link>
           </Button>
         </div>
       </div>

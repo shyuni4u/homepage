@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,4 +120,18 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* rehype-pretty-code dual theme: light mode uses shiki-light vars */
+code[data-theme],
+code[data-theme] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+/* rehype-pretty-code dual theme: dark mode uses shiki-dark vars */
+.dark code[data-theme],
+.dark code[data-theme] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
