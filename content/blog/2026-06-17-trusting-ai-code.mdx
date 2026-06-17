@@ -97,7 +97,7 @@ Supabase는 staging과 main을 분리했고, Vercel은 preview와 production을 
 
 테스트는 AI 코드를 믿기 위해 치르는 비용이다. 그래서 세 겹으로 깔았다.
 
-- **unit**: vitest, 샤딩해서 병렬로 돌리고 모든 샤드가 통과해야 게이트가 열린다.
+- **unit**: Vitest, 샤딩해서 병렬로 돌리고 모든 샤드가 통과해야 게이트가 열린다.
 - **integration**: 실제 Supabase를 로컬에 띄워서 RPC와 RLS를 진짜 DB에 대고 검증한다.
 - **e2e**: Playwright로 시드된 사용자가 실제 브라우저 플로우를 밟는다.
 
